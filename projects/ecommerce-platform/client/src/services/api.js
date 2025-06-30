@@ -38,7 +38,7 @@ export const fetchProduct = (id) => {
 };
 
 export const fetchCategories = () => {
-  return api.get('/api/products/categories/all').then(response => response.data);
+  return api.get('/api/products/categories').then(response => response.data);
 };
 
 // Cart API calls

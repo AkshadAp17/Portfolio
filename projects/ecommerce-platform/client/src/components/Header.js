@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCartIcon, UserIcon, MagnifyingGlassIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 
@@ -33,39 +32,52 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+    <header className="header">
+      <div className="container">
+        <div className="header-content">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div className="text-2xl font-bold text-blue-600">
-              ShopZone
-            </div>
+          <Link to="/" className="logo">
+            ShopZone
           </Link>
 
           {/* Search Bar - Desktop */}
-          <div className="hidden md:flex flex-1 max-w-lg mx-8">
-            <form onSubmit={handleSearch} className="w-full">
-              <div className="relative">
+          <div style={{ 
+            display: 'flex', 
+            flex: 1, 
+            maxWidth: '500px', 
+            margin: '0 2rem',
+            '@media (max-width: 768px)': { display: 'none' }
+          }}>
+            <form onSubmit={handleSearch} style={{ width: '100%' }}>
+              <div style={{ position: 'relative' }}>
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search products..."
-                  className="w-full px-4 py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="search-input"
+                  style={{ paddingLeft: '2.5rem' }}
                 />
-                <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+                <span style={{ 
+                  position: 'absolute', 
+                  left: '0.75rem', 
+                  top: '50%', 
+                  transform: 'translateY(-50%)',
+                  color: '#6b7280'
+                }}>🔍</span>
               </div>
             </form>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="nav" style={{ 
+            '@media (max-width: 768px)': { display: 'none' }
+          }}>
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className="nav-link"
               >
                 {item.name}
               </Link>
@@ -73,12 +85,12 @@ const Header = () => {
           </nav>
 
           {/* User Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="auth-buttons">
             {/* Cart */}
-            <Link to="/cart" className="relative p-2">
-              <ShoppingCartIcon className="h-6 w-6 text-gray-700 hover:text-blue-600" />
+            <Link to="/cart" style={{ position: 'relative', padding: '0.5rem' }}>
+              <span style={{ fontSize: '1.25rem' }}>🛒</span>
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="cart-badge">
                   {cartItemsCount}
                 </span>
               )}
@@ -86,82 +98,120 @@ const Header = () => {
 
             {/* User Menu */}
             {user ? (
-              <div className="relative group">
-                <button className="flex items-center space-x-2 text-gray-700 hover:text-blue-600">
-                  <UserIcon className="h-6 w-6" />
-                  <span className="hidden sm:block">{user.name}</span>
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <button 
+                  className="btn btn-outline"
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+                >
+                  <span>👤</span>
+                  <span style={{ '@media (max-width: 640px)': { display: 'none' } }}>
+                    {user.name || user.username}
+                  </span>
                 </button>
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block">
+                <div style={{ 
+                  position: 'absolute', 
+                  right: 0, 
+                  marginTop: '0.5rem', 
+                  width: '12rem', 
+                  background: 'white', 
+                  borderRadius: '0.375rem', 
+                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', 
+                  padding: '0.25rem 0',
+                  display: 'none',
+                  zIndex: 50
+                }} 
+                className="user-dropdown">
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="nav-link"
+                    style={{ 
+                      display: 'block', 
+                      padding: '0.5rem 1rem', 
+                      fontSize: '0.875rem' 
+                    }}
                   >
                     Profile
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="nav-link"
+                    style={{ 
+                      display: 'block', 
+                      width: '100%', 
+                      textAlign: 'left', 
+                      padding: '0.5rem 1rem', 
+                      fontSize: '0.875rem',
+                      background: 'none',
+                      border: 'none'
+                    }}
                   >
                     Logout
                   </button>
                 </div>
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
-                <Link
-                  to="/login"
-                  className="text-gray-700 hover:text-blue-600 font-medium"
-                >
+              <>
+                <Link to="/login" className="btn btn-outline">
                   Login
                 </Link>
-                <Link
-                  to="/register"
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                >
+                <Link to="/register" className="btn btn-primary">
                   Sign Up
                 </Link>
-              </div>
+              </>
             )}
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2"
+              className="btn btn-outline"
+              style={{ 
+                display: 'none',
+                '@media (max-width: 768px)': { display: 'block' }
+              }}
             >
-              {isMenuOpen ? (
-                <XMarkIcon className="h-6 w-6" />
-              ) : (
-                <Bars3Icon className="h-6 w-6" />
-              )}
+              {isMenuOpen ? '✕' : '☰'}
             </button>
           </div>
         </div>
 
         {/* Mobile Search */}
-        <div className="md:hidden pb-4">
+        <div style={{ 
+          paddingBottom: '1rem',
+          '@media (min-width: 769px)': { display: 'none' }
+        }}>
           <form onSubmit={handleSearch}>
-            <div className="relative">
+            <div style={{ position: 'relative' }}>
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search products..."
-                className="w-full px-4 py-2 pl-10 pr-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="search-input"
+                style={{ paddingLeft: '2.5rem' }}
               />
-              <MagnifyingGlassIcon className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+              <span style={{ 
+                position: 'absolute', 
+                left: '0.75rem', 
+                top: '50%', 
+                transform: 'translateY(-50%)',
+                color: '#6b7280'
+              }}>🔍</span>
             </div>
           </form>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4">
-            <nav className="flex flex-col space-y-4">
+          <div style={{ 
+            paddingBottom: '1rem',
+            '@media (min-width: 769px)': { display: 'none' }
+          }}>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="text-gray-700 hover:text-blue-600 font-medium"
+                  className="nav-link"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -171,6 +221,22 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      <style jsx>{`
+        .user-dropdown:hover,
+        .user-dropdown:focus-within {
+          display: block !important;
+        }
+        
+        @media (max-width: 768px) {
+          .nav { display: none !important; }
+          .mobile-menu-btn { display: block !important; }
+        }
+        
+        @media (min-width: 769px) {
+          .mobile-search, .mobile-menu { display: none !important; }
+        }
+      `}</style>
     </header>
   );
 };

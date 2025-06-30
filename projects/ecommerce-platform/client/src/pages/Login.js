@@ -1,79 +1,146 @@
 import React, { useState } from 'react';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const redirect = searchParams.get('redirect') || '/';
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+    }
+    
+    return newErrors;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
     
-    const result = await login(formData.email, formData.password);
-    if (result.success) {
-      navigate(redirect);
-    } else {
-      setError(result.error);
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      return;
     }
-    setLoading(false);
+
+    setIsLoading(true);
+    setErrors({});
+
+    try {
+      await login(formData.email, formData.password);
+      navigate('/');
+    } catch (error) {
+      setErrors({ submit: error.message || 'Login failed. Please try again.' });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
+    <div className="container" style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div className="form">
+        <div className="text-center mb-8">
+          <h1 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '0.5rem' }}>
+            Welcome Back
+          </h1>
+          <p style={{ color: '#6b7280' }}>
+            Sign in to your account to continue shopping
+          </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {error && (
-            <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
-              {error}
-            </div>
-          )}
-          <div>
+
+        {errors.submit && (
+          <div className="alert alert-error">
+            {errors.submit}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              Email Address
+            </label>
             <input
               type="email"
-              required
+              id="email"
+              name="email"
               value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              placeholder="Email address"
-              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Enter your email"
             />
+            {errors.email && (
+              <div className="form-error">{errors.email}</div>
+            )}
           </div>
-          <div>
+
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
             <input
               type="password"
-              required
+              id="password"
+              name="password"
               value={formData.password}
-              onChange={(e) => setFormData({...formData, password: e.target.value})}
-              placeholder="Password"
-              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              onChange={handleChange}
+              className="form-input"
+              placeholder="Enter your password"
             />
+            {errors.password && (
+              <div className="form-error">{errors.password}</div>
+            )}
           </div>
-          <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
-            >
-              {loading ? 'Signing in...' : 'Sign in'}
-            </button>
-          </div>
-          <div className="text-center">
-            <Link to="/register" className="text-blue-600 hover:text-blue-500">
-              Don't have an account? Sign up
-            </Link>
-          </div>
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="btn btn-primary w-full"
+            style={{ marginBottom: '1rem' }}
+          >
+            {isLoading ? 'Signing in...' : 'Sign In'}
+          </button>
         </form>
+
+        <div className="text-center">
+          <p style={{ color: '#6b7280' }}>
+            Don't have an account?{' '}
+            <Link to="/register" style={{ color: '#2563eb', textDecoration: 'none' }}>
+              Sign up here
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
