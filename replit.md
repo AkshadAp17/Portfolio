@@ -10,7 +10,7 @@ The application follows a monorepo structure with clear separation between clien
 
 - **Frontend**: React with TypeScript, using Vite as the build tool
 - **Backend**: Express.js server with TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
+- **Database**: MongoDB with Mongoose ODM
 - **Styling**: Tailwind CSS with shadcn/ui component library
 - **State Management**: TanStack Query for server state management
 - **Animations**: Framer Motion for smooth animations
@@ -32,10 +32,10 @@ The application follows a monorepo structure with clear separation between clien
 - **Request logging** for development and debugging purposes
 
 ### Database Layer
-- **Drizzle ORM** for type-safe database operations and schema management
-- **PostgreSQL** as the primary database (configured but can be adapted)
-- **Schema-first approach** with shared types between client and server
-- **Migration support** through Drizzle Kit for database versioning
+- **Mongoose ODM** for MongoDB integration with schema validation
+- **MongoDB** as the primary database with local instance and MongoDB Compass support
+- **Document-based approach** with Mongoose schemas for data validation
+- **Real-time data persistence** for contact submissions and user management
 
 ### UI Components
 - **Comprehensive component library** including forms, navigation, cards, and interactive elements
@@ -90,6 +90,26 @@ Build commands:
 - `npm start` - Start production server
 - `npm run db:push` - Push database schema changes
 
+## MongoDB Integration
+
+The application now uses MongoDB as its primary database with Mongoose ODM for data modeling. The system includes:
+
+### Database Setup
+- **Local MongoDB**: Running on port 27017 with portfolio database
+- **MongoDB Compass**: Visual database management tool
+- **Connection String**: `mongodb://localhost:27017/portfolio`
+- **Fallback System**: In-memory storage when MongoDB is unavailable
+
+### Collections
+- **contactsubmissions**: Contact form submissions from portfolio
+- **users**: User authentication data (for future features)
+
+### MongoDB Compass Usage
+1. Download and install MongoDB Compass
+2. Connect using: `mongodb://localhost:27017/portfolio`
+3. Browse collections to view contact submissions
+4. Export data, run queries, and manage database visually
+
 ## Changelog
 - June 30, 2025. Initial setup
 - June 30, 2025. Created complete portfolio website with 4 full-stack projects:
@@ -97,6 +117,7 @@ Build commands:
   2. Task Management App (React/TypeScript/Socket.io/MongoDB)
   3. Weather Forecast App (Vue.js/PWA/Chart.js/API Integration)
   4. Social Media Dashboard (Next.js/Prisma/Redis/OAuth)
+- June 30, 2025. Integrated MongoDB database with Mongoose ODM and MongoDB Compass support
 
 ## User Preferences
 
