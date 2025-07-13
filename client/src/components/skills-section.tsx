@@ -65,7 +65,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-slate-50">
+    <section id="skills" className="py-20 bg-slate-50 dark:bg-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -74,8 +74,8 @@ const SkillsSection = () => {
           variants={fadeInUp}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Skills & Technologies</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Skills & Technologies</h2>
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             The tools and technologies I use to bring ideas to life
           </p>
         </motion.div>
@@ -91,17 +91,17 @@ const SkillsSection = () => {
             <motion.div
               key={index}
               variants={staggerItem}
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="text-[var(--portfolio-primary)] text-3xl mb-4">
                 <category.icon size={32} />
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-4">{category.title}</h3>
+              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4">{category.title}</h3>
               <div className="space-y-3">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skillIndex} className="flex items-center justify-between">
-                    <span className="text-slate-700">{skill.name}</span>
-                    <div className="w-16 bg-slate-200 rounded-full h-2">
+                    <span className="text-slate-700 dark:text-slate-300">{skill.name}</span>
+                    <div className="w-16 bg-slate-200 dark:bg-slate-700 rounded-full h-2">
                       <motion.div
                         className="bg-[var(--portfolio-primary)] h-2 rounded-full skill-progress"
                         initial={{ width: 0 }}

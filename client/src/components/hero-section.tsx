@@ -16,7 +16,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-900">
       <div className="max-w-6xl mx-auto text-center">
         <motion.div
           initial="hidden"
@@ -32,12 +32,12 @@ const HeroSection = () => {
             />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6">
             Hi, I'm <span className="gradient-text">Akshad Apastambh</span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            Fresher Full Stack Developer passionate about creating beautiful, functional web applications that solve real-world problems
+          <p className="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 mb-8 max-w-3xl mx-auto">
+            Final Year Computer Science Student passionate about creating beautiful, functional web applications that solve real-world problems
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">

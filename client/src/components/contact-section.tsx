@@ -95,7 +95,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-slate-50">
+    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -104,8 +104,8 @@ const ContactSection = () => {
           variants={fadeInUp}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Get In Touch</h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">Get In Touch</h2>
+          <p className="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Ready to start your next project? Let's discuss how we can work together to bring your ideas to life.
           </p>
         </motion.div>
@@ -119,8 +119,8 @@ const ContactSection = () => {
             className="space-y-8"
           >
             <motion.div variants={staggerItem}>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-6">Let's work together</h3>
-              <p className="text-lg text-slate-700 mb-8">
+              <h3 className="text-2xl font-semibold text-slate-900 dark:text-white mb-6">Let's work together</h3>
+              <p className="text-lg text-slate-700 dark:text-slate-300 mb-8">
                 I'm always interested in new opportunities and exciting projects. Whether you're a startup
                 looking to build your first product or an established company wanting to modernize your tech stack,
                 I'd love to hear from you.
@@ -134,8 +134,8 @@ const ContactSection = () => {
                     <info.icon size={20} />
                   </div>
                   <div>
-                    <h4 className="font-medium text-slate-900">{info.title}</h4>
-                    <p className="text-slate-600">{info.value}</p>
+                    <h4 className="font-medium text-slate-900 dark:text-white">{info.title}</h4>
+                    <p className="text-slate-600 dark:text-slate-400">{info.value}</p>
                   </div>
                 </div>
               ))}
