@@ -41,7 +41,7 @@
 
 ---
 
-## 🌟 **Additional Project Ideas** (22 total projects possible)
+## 🌟 **Additional Project Ideas** (22 total + 15 college-specific projects possible)
 
 ### Web Applications
 - **Portfolio Website** 💼 (Current project)
