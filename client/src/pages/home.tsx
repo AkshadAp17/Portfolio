@@ -9,6 +9,17 @@ import Footer from "@/components/footer";
 const Home = () => {
   return (
     <div className="min-h-screen">
+      <div className="floating-shapes">
+        <div className="floating-shape">💻</div>
+        <div className="floating-shape">⚡</div>
+        <div className="floating-shape">🚀</div>
+        <div className="floating-shape">🎯</div>
+        <div className="floating-shape">💡</div>
+        <div className="floating-shape">🔧</div>
+        <div className="floating-shape">📱</div>
+        <div className="floating-shape">🌐</div>
+        <div className="floating-shape">🎨</div>
+      </div>
       <Navigation />
       <HeroSection />
       <AboutSection />
