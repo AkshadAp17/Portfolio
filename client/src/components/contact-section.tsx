@@ -75,17 +75,17 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "alex.johnson@email.com",
+      value: "akshadapastambh37@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+91 8459791239",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "India",
     },
     {
       icon: Clock,

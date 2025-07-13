@@ -118,6 +118,13 @@ The application now uses MongoDB as its primary database with Mongoose ODM for d
   3. Weather Forecast App (Vue.js/PWA/Chart.js/API Integration)
   4. Social Media Dashboard (Next.js/Prisma/Redis/OAuth)
 - June 30, 2025. Integrated MongoDB database with Mongoose ODM and MongoDB Compass support
+- January 13, 2025. Migrated to Replit environment for Akshad Apastambh:
+  - Updated personal information (name, email, phone: +91 8459791239)
+  - Configured MongoDB Atlas connection with production database
+  - Integrated Nodemailer for contact form email notifications
+  - Updated portfolio for fresher profile (20+ projects, adjusted skill levels)
+  - Removed mobile development experience as requested
+  - Set up environment variables for secure email and database access
 
 ## User Preferences
 

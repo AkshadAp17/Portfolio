@@ -7,9 +7,9 @@ const ProjectsSection = () => {
   const projects = [
     {
       title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution built with React, Node.js, and PostgreSQL. Features include user authentication, product management, shopping cart, and payment integration.",
+      description: "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, product management, shopping cart, and payment integration.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
       completedDate: "March 2024",
       demoUrl: "#",
       githubUrl: "#",
@@ -18,26 +18,44 @@ const ProjectsSection = () => {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features. Built with modern React and WebSocket integration.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      technologies: ["React", "TypeScript", "Socket.io", "MongoDB"],
+      technologies: ["React", "JavaScript", "Socket.io", "MongoDB"],
       completedDate: "February 2024",
       demoUrl: "#",
       githubUrl: "#",
     },
     {
       title: "Weather Forecast App",
-      description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics. Features responsive design and offline capabilities.",
+      description: "A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics. Features responsive design and API integration.",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      technologies: ["Vue.js", "PWA", "Chart.js", "API Integration"],
+      technologies: ["HTML", "CSS", "JavaScript", "API Integration"],
       completedDate: "January 2024",
       demoUrl: "#",
       githubUrl: "#",
     },
     {
-      title: "Social Media Dashboard",
-      description: "A comprehensive dashboard for managing multiple social media accounts with analytics, post scheduling, and engagement tracking. Built with modern frameworks and real-time data.",
+      title: "Portfolio Website",
+      description: "A responsive portfolio website showcasing projects, skills, and contact information. Built with modern web technologies and featuring smooth animations.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
-      technologies: ["Next.js", "Prisma", "Redis", "OAuth"],
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
       completedDate: "December 2023",
+      demoUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Recipe Finder App",
+      description: "A recipe discovery application with search functionality, ingredient filtering, and meal planning features. Integrated with external recipe APIs.",
+      image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+      technologies: ["React", "JavaScript", "API Integration", "CSS"],
+      completedDate: "November 2023",
+      demoUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Todo List Application",
+      description: "A feature-rich todo application with categories, priorities, due dates, and local storage. Built with vanilla JavaScript and modern CSS.",
+      image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+      technologies: ["JavaScript", "HTML", "CSS", "Local Storage"],
+      completedDate: "October 2023",
       demoUrl: "#",
       githubUrl: "#",
     },
@@ -73,7 +91,7 @@ const ProjectsSection = () => {
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            A selection of projects that showcase my skills and passion for development
+            A selection from my 20+ projects that showcase my skills and passion for development
           </p>
         </motion.div>
 

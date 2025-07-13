@@ -3,9 +3,9 @@ import { fadeInUp, staggerContainer, staggerItem } from "@/lib/animations";
 
 const AboutSection = () => {
   const achievements = [
-    "5+ Years Experience",
-    "50+ Projects Completed",
-    "Remote Team Leader"
+    "Fresh Graduate",
+    "20+ Projects Completed",
+    "Quick Learner"
   ];
 
   return (
@@ -36,7 +36,7 @@ const AboutSection = () => {
               variants={staggerItem}
               className="text-lg text-slate-700 leading-relaxed"
             >
-              I'm a full-stack developer with over 5 years of experience building web applications that users love.
+              I'm a fresh graduate and aspiring full-stack developer passionate about building web applications that make a difference.
               My journey started with a Computer Science degree, but my real education came from countless hours of
               coding, learning, and pushing the boundaries of what's possible on the web.
             </motion.p>
@@ -47,7 +47,7 @@ const AboutSection = () => {
             >
               I believe in writing clean, maintainable code and creating intuitive user experiences. Whether I'm
               working with React, Node.js, or exploring new technologies, I'm always focused on delivering value
-              and solving real problems.
+              and solving real problems. As a fresher, I'm eager to learn and contribute to meaningful projects.
             </motion.p>
 
             <motion.div
@@ -77,13 +77,13 @@ const AboutSection = () => {
 
             {/* Floating stats */}
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl border">
-              <div className="text-2xl font-bold text-[var(--portfolio-primary)]">50+</div>
+              <div className="text-2xl font-bold text-[var(--portfolio-primary)]">20+</div>
               <div className="text-sm text-slate-600">Projects Completed</div>
             </div>
 
             <div className="absolute -top-6 -right-6 bg-white p-6 rounded-xl shadow-xl border">
-              <div className="text-2xl font-bold text-[var(--portfolio-primary)]">5+</div>
-              <div className="text-sm text-slate-600">Years Experience</div>
+              <div className="text-2xl font-bold text-[var(--portfolio-primary)]">Fresh</div>
+              <div className="text-sm text-slate-600">Graduate</div>
             </div>
           </motion.div>
         </div>

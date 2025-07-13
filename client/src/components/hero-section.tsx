@@ -27,17 +27,17 @@ const HeroSection = () => {
           <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden shadow-xl">
             <img
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&h=256"
-              alt="Alex Johnson - Full Stack Developer"
+              alt="Akshad Apastambh - Full Stack Developer"
               className="w-full h-full object-cover"
             />
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-            Hi, I'm <span className="gradient-text">Alex Johnson</span>
+            Hi, I'm <span className="gradient-text">Akshad Apastambh</span>
           </h1>
 
           <p className="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
-            Full Stack Developer passionate about creating beautiful, functional web applications that solve real-world problems
+            Fresher Full Stack Developer passionate about creating beautiful, functional web applications that solve real-world problems
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -86,7 +86,7 @@ const HeroSection = () => {
               <Twitter size={24} />
             </a>
             <a
-              href="mailto:alex.johnson@email.com"
+              href="mailto:akshadapastambh37@gmail.com"
               className="text-slate-500 hover:text-[var(--portfolio-primary)] transition-colors duration-200"
             >
               <Mail size={24} />
