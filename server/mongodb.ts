@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.DATABASE_URL || 'mongodb://localhost:27017/portfolio';
+const MONGODB_URI = process.env.DATABASE_URL || 'mongodb+srv://akshad:M5wxz0XgMsaswQQd@cluster0.qsbcrkt.mongodb.net/portfolio?retryWrites=true&w=majority';
 
 let isConnected = false;
 

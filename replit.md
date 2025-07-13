@@ -125,6 +125,11 @@ The application now uses MongoDB as its primary database with Mongoose ODM for d
   - Updated portfolio for fresher profile (20+ projects, adjusted skill levels)
   - Removed mobile development experience as requested
   - Set up environment variables for secure email and database access
+  - Added dark/light mode toggle in navigation bar
+  - Implemented visual elements (emojis) instead of images for better performance
+  - Fixed project list to show only existing projects from repository
+  - Added comprehensive dark mode support across all components
+  - Fixed MongoDB Atlas connection for proper data storage
 
 ## User Preferences
 

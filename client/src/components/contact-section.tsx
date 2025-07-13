@@ -174,7 +174,7 @@ const ContactSection = () => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="bg-white p-8 rounded-xl shadow-lg"
+            className="bg-white dark:bg-slate-900 p-8 rounded-xl shadow-lg"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">

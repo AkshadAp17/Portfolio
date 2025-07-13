@@ -1,10 +1,36 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    if (isDark) {
+      setIsDark(false);
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +81,7 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -69,6 +95,20 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            
+            {/* Theme Toggle Button */}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={toggleTheme}
+              className="ml-4 bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800"
+            >
+              {isDark ? (
+                <Sun className="h-4 w-4 text-yellow-500" />
+              ) : (
+                <Moon className="h-4 w-4 text-slate-700" />
+              )}
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -92,12 +132,29 @@ const Navigation = () => {
                 className={`block w-full text-left py-2 transition-colors duration-200 ${
                   activeSection === item.id
                     ? "text-[var(--portfolio-primary)]"
-                    : "text-slate-600 hover:text-[var(--portfolio-primary)]"
+                    : "text-slate-600 dark:text-slate-300 hover:text-[var(--portfolio-primary)]"
                 }`}
               >
                 {item.label}
               </button>
             ))}
+            
+            {/* Mobile Theme Toggle */}
+            <div className="flex items-center justify-between py-2">
+              <span className="text-slate-600 dark:text-slate-300">Dark Mode</span>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                className="bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 border-slate-200 dark:border-slate-700"
+              >
+                {isDark ? (
+                  <Sun className="h-4 w-4 text-yellow-500" />
+                ) : (
+                  <Moon className="h-4 w-4 text-slate-700" />
+                )}
+              </Button>
+            </div>
           </div>
         )}
       </div>
