@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Twitter, Mail, Sparkles, Code, Rocket, User } from "lucide-react";
-import { fadeInUp } from "@/lib/animations";
+import { ArrowDown, Github, Linkedin, Twitter, Mail, Rocket, Sparkles, Code, Zap } from "lucide-react";
 
 const HeroSection = () => {
   const scrollToSection = (sectionId: string) => {
@@ -15,71 +14,122 @@ const HeroSection = () => {
     }
   };
 
+  const socialLinks = [
+    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Mail, href: "#", label: "Email" },
+  ];
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-7xl mx-auto">
+      {/* Background animated elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Floating code symbols */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-blue-400/20 dark:text-blue-300/20 text-2xl"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 360],
+              opacity: [0.2, 0.5, 0.2],
+            }}
+            transition={{
+              duration: 6 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          >
+            {['<>', '</>', '{}', '[]', '()', '//', '&&', '||'][i]}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="text-center lg:text-left"
           >
             {/* Badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium mb-6 relative overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
             >
-              <Code className="h-4 w-4" />
-              Full Stack Developer
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                animate={{ x: [-100, 100] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              />
+              <span className="relative z-10">👨‍💻</span>
+              <span className="relative z-10">Full Stack Developer</span>
             </motion.div>
 
             {/* Main Heading */}
-            <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 dark:text-white mb-6 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-            >
-              Hi, I'm{" "}
-              <span className="gradient-text">Akshad</span>
-              <br />
-              <span className="text-slate-900 dark:text-white">Apastambh</span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p 
-              className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
+            >
+              <span className="text-slate-900 dark:text-white">Hi, I'm </span>
+              <motion.span 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                whileHover={{
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Akshad
+              </motion.span>
+              <span className="text-slate-900 dark:text-white"> Apastambh</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
               Final Year Computer Science Student passionate about creating beautiful, 
               functional web applications that solve real-world problems.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => scrollToSection("projects")}
+                  className="relative bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
-                  <Rocket className="mr-2 h-5 w-5" />
-                  View My Work
-                  <ArrowDown className="ml-2 h-5 w-5" />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    animate={{ x: [-100, 100] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+                  <Rocket className="mr-2 h-5 w-5 relative z-10" />
+                  <span className="relative z-10">View My Work</span>
+                  <ArrowDown className="ml-2 h-5 w-5 relative z-10" />
                 </Button>
               </motion.div>
               
@@ -88,35 +138,30 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   onClick={() => scrollToSection("contact")}
+                  variant="outline"
+                  className="relative border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 px-8 py-3 text-lg font-medium rounded-lg transition-all duration-300 overflow-hidden group"
                 >
-                  Get In Touch
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                  <span className="relative z-10">Get In Touch</span>
                 </Button>
               </motion.div>
             </motion.div>
 
             {/* Social Links */}
-            <motion.div 
-              className="flex justify-center lg:justify-start space-x-6"
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex justify-center lg:justify-start gap-6"
             >
-              {[
-                { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:text-gray-800 dark:hover:text-gray-200" },
-                { icon: Linkedin, href: "https://www.linkedin.com/in/akshad-apastambh-9726332a1/", label: "LinkedIn", color: "hover:text-blue-600" },
-                { icon: Twitter, href: "https://twitter.com", label: "Twitter", color: "hover:text-blue-400" },
-                { icon: Mail, href: "mailto:akshadapastambh37@gmail.com", label: "Email", color: "hover:text-red-500" }
-              ].map((social, index) => (
+              {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-slate-500 transition-all duration-300 relative group ${social.color}`}
+                  className="group relative p-3 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300"
                   whileHover={{ 
                     scale: 1.2, 
                     rotate: 5,
@@ -125,18 +170,18 @@ const HeroSection = () => {
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.1 + index * 0.1 }}
+                  transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}
                 >
-                  <social.icon size={28} className="drop-shadow-lg" />
                   <motion.div
-                    className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 backdrop-blur-sm"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <social.icon size={24} className="relative z-10 drop-shadow-lg" />
+                  <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 backdrop-blur-sm transition-opacity duration-300">
                     {social.label}
                     <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-slate-800 rotate-45"></div>
-                  </motion.div>
+                  </div>
                 </motion.a>
               ))}
             </motion.div>
@@ -144,12 +189,12 @@ const HeroSection = () => {
 
           {/* Right Column - Visual */}
           <motion.div
-            className="relative flex justify-center lg:justify-end"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
+            className="flex justify-center lg:justify-end"
           >
-            {/* Main Avatar Container */}
+            {/* Enhanced Developer Illustration */}
             <motion.div 
               className="relative w-80 h-80"
               whileHover={{ scale: 1.05 }}
@@ -165,24 +210,46 @@ const HeroSection = () => {
                 scale: { duration: 0.3 }
               }}
             >
-              {/* Gradient Border */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full p-2">
-                <div className="w-full h-full bg-white dark:bg-slate-800 rounded-full flex items-center justify-center relative overflow-hidden">
-                  {/* Developer Avatar */}
-                  <div className="w-48 h-48 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-6xl relative">
-                    <User className="w-24 h-24" />
-                    
-                    {/* Animated shine effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                      animate={{ x: [-100, 100] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                    />
+              {/* Outer gradient border */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl p-2 shadow-2xl">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-3xl"
+                  animate={{ x: [-100, 100] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Inner content */}
+                <div className="w-full h-full bg-white dark:bg-slate-800 rounded-2xl flex items-center justify-center relative overflow-hidden">
+                  <div className="text-center relative z-10">
+                    <motion.div 
+                      className="text-8xl mb-4"
+                      animate={{ 
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{ 
+                        duration: 4, 
+                        repeat: Infinity, 
+                        ease: "easeInOut" 
+                      }}
+                    >
+                      👨‍💻
+                    </motion.div>
+                    <motion.div 
+                      className="text-xl font-semibold text-slate-700 dark:text-slate-300 mb-2"
+                      animate={{ opacity: [0.8, 1, 0.8] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      Developer
+                    </motion.div>
+                    <div className="text-sm text-slate-500 dark:text-slate-400">
+                      React • Node.js • TypeScript
+                    </div>
                   </div>
                   
                   {/* Floating elements */}
                   <motion.div
-                    className="absolute -top-4 -right-4 text-yellow-400"
+                    className="absolute top-4 right-4 text-yellow-400"
                     animate={{ 
                       rotate: [0, 360],
                       scale: [1, 1.2, 1]
@@ -193,11 +260,11 @@ const HeroSection = () => {
                       ease: "linear" 
                     }}
                   >
-                    <Sparkles size={32} />
+                    <Sparkles size={24} />
                   </motion.div>
-
+                  
                   <motion.div
-                    className="absolute -bottom-4 -left-4 text-blue-400"
+                    className="absolute bottom-4 left-4 text-blue-400"
                     animate={{ 
                       rotate: [0, -360],
                       scale: [1, 1.1, 1]
@@ -208,7 +275,22 @@ const HeroSection = () => {
                       ease: "linear" 
                     }}
                   >
-                    <Code size={24} />
+                    <Code size={20} />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute top-1/2 left-4 text-purple-400"
+                    animate={{ 
+                      y: [0, -10, 0],
+                      opacity: [0.5, 1, 0.5]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                  >
+                    <Zap size={16} />
                   </motion.div>
                 </div>
               </div>

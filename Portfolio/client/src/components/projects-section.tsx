@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Calendar, ArrowRight, Sparkles, Star, Zap, TrendingUp, Rocket, Crown } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerItem, projectCardHover } from "@/lib/animations";
+import { ExternalLink, Github, Calendar, ArrowRight, Sparkles, Star, Zap, TrendingUp, Rocket, Crown, Eye, Code, Play } from "lucide-react";
 
 const ProjectsSection = () => {
   const projects = [
@@ -17,7 +16,8 @@ const ProjectsSection = () => {
       stars: 15,
       difficulty: "Advanced",
       category: "Enterprise",
-      icon: "🏛️"
+      icon: "🏛️",
+      color: "from-blue-500 to-purple-600"
     },
     {
       title: "Hema Motor - Freelancing Project",
@@ -31,7 +31,8 @@ const ProjectsSection = () => {
       stars: 28,
       difficulty: "Intermediate",
       category: "E-commerce",
-      icon: "🏁"
+      icon: "🏁",
+      color: "from-green-500 to-emerald-600"
     },
     {
       title: "Facility Booking System",
@@ -45,7 +46,8 @@ const ProjectsSection = () => {
       stars: 12,
       difficulty: "Intermediate",
       category: "Corporate",
-      icon: "🏢"
+      icon: "🏢",
+      color: "from-orange-500 to-red-600"
     },
     {
       title: "Food Delivery System",
@@ -59,7 +61,8 @@ const ProjectsSection = () => {
       stars: 35,
       difficulty: "Advanced",
       category: "Mobile App",
-      icon: "🍕"
+      icon: "🍕",
+      color: "from-pink-500 to-rose-600"
     },
     {
       title: "Money Split Application",
@@ -73,7 +76,8 @@ const ProjectsSection = () => {
       stars: 42,
       difficulty: "Intermediate",
       category: "Finance",
-      icon: "💳"
+      icon: "💳",
+      color: "from-yellow-500 to-amber-600"
     },
   ];
 
@@ -99,315 +103,311 @@ const ProjectsSection = () => {
     "WebSocket": "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
   };
 
-  const difficultyColors = {
-    "Beginner": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
-    "Intermediate": "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
-    "Advanced": "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
-  };
-
-  const categoryColors = {
-    "Enterprise": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
-    "E-commerce": "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
-    "Corporate": "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300",
-    "Mobile App": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
-    "Finance": "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300",
-  };
+  const stats = [
+    { label: "Projects", value: "5+", color: "text-blue-500" },
+    { label: "Technologies", value: "3+", color: "text-purple-500" },
+    { label: "Years", value: "2+", color: "text-green-500" },
+  ];
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
-      {/* Enhanced background decoration */}
-      <div className="absolute inset-0 opacity-5 dark:opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 w-80 h-80 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+    <section id="projects" className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
+      {/* Background animated elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Floating project icons */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute text-4xl opacity-10 dark:opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [0, 360],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 8 + Math.random() * 4,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          >
+            {['💻', '🚀', '⚡', '🎯', '🔥', '⭐'][i]}
+          </motion.div>
+        ))}
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced live header */}
+        {/* Section Header */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={fadeInUp}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          {/* Live animated header */}
-          <motion.div
-            className="inline-flex items-center gap-3 mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <motion.div
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="h-8 w-8 text-blue-600" />
-            </motion.div>
-            <motion.div
-              className="flex items-center gap-2"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Zap className="h-6 w-6 text-yellow-500" />
-              <span className="text-blue-600 font-bold text-lg">LIVE PORTFOLIO</span>
-              <Zap className="h-6 w-6 text-yellow-500" />
-            </motion.div>
-            <motion.div
-              animate={{ rotate: [0, -360] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="h-8 w-8 text-blue-600" />
-            </motion.div>
-          </motion.div>
-
-          <motion.h2 
-            className="text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white mb-6 font-heading relative"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <span className="gradient-text">Creative</span>{" "}
-            <span className="text-slate-900 dark:text-white">Portfolio</span>
-            <motion.div
-              className="absolute -top-2 -right-2"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 4, repeat: Infinity }}
-            >
-              <Crown className="h-8 w-8 text-yellow-500" />
-            </motion.div>
-          </motion.h2>
-
-          <motion.p 
-            className="text-xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4"
+            whileHover={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
             A showcase of my professional projects including freelancing work and full-stack applications
-          </motion.p>
-
-          {/* Live stats */}
+          </motion.h2>
+          
+          {/* Stats */}
           <motion.div
-            className="flex justify-center gap-8 mt-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="flex justify-center gap-8 mt-8"
           >
-            <motion.div 
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-2xl font-bold text-blue-600">5+</div>
-              <div className="text-sm text-slate-500">Projects</div>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-2xl font-bold text-purple-600">3+</div>
-              <div className="text-sm text-slate-500">Technologies</div>
-            </motion.div>
-            <motion.div 
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="text-2xl font-bold text-green-600">2+</div>
-              <div className="text-sm text-slate-500">Years</div>
-            </motion.div>
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                whileHover={{ scale: 1.1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+              >
+                <div className={`text-2xl font-bold ${stat.color}`}>{stat.value}</div>
+                <div className="text-sm text-slate-600 dark:text-slate-400">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
 
+        {/* Projects Grid */}
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          variants={staggerContainer}
+          transition={{ duration: 0.8 }}
           className="grid lg:grid-cols-2 gap-8"
         >
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              variants={staggerItem}
-              whileHover="hover"
-              className="group relative glass-effect rounded-2xl overflow-hidden card-hover"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="group relative"
             >
-              <motion.div variants={projectCardHover}>
-                {/* Enhanced project visual with better icons */}
-                <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-slate-800 dark:via-slate-700 dark:to-slate-800">
-                  <motion.div 
-                    className="w-full h-80 flex items-center justify-center relative"
-                    whileHover={{ scale: 1.05 }}
+              {/* Enhanced Project Card */}
+              <motion.div
+                className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700"
+                whileHover={{ 
+                  y: -10,
+                  scale: 1.02,
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Live badge */}
+                <motion.div
+                  className="absolute top-4 left-4 z-20"
+                  whileHover={{ scale: 1.1 }}
+                  animate={{ 
+                    boxShadow: [
+                      "0 0 0 0 rgba(34, 197, 94, 0.4)",
+                      "0 0 0 10px rgba(34, 197, 94, 0)",
+                      "0 0 0 0 rgba(34, 197, 94, 0)"
+                    ]
+                  }}
+                  transition={{ 
+                    boxShadow: { duration: 2, repeat: Infinity },
+                    scale: { duration: 0.2 }
+                  }}
+                >
+                  <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+                    LIVE
+                  </span>
+                </motion.div>
+
+                {/* Project Visual */}
+                <div className="relative h-64 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                  {/* Animated background pattern */}
+                  <div className="absolute inset-0 opacity-5">
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+                      backgroundSize: '20px 20px'
+                    }}></div>
+                  </div>
+                  
+                  {/* Main project icon */}
+                  <motion.div
+                    className="text-6xl relative z-10"
+                    animate={{ 
+                      rotate: [0, 5, -5, 0],
+                      scale: [1, 1.05, 1],
+                      y: [0, -5, 0]
+                    }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      ease: "easeInOut" 
+                    }}
+                  >
+                    {project.icon}
+                  </motion.div>
+                  
+                  {/* Floating elements */}
+                  <motion.div
+                    className="absolute top-4 right-4 text-yellow-400"
+                    animate={{ 
+                      rotate: [0, 360],
+                      scale: [1, 1.2, 1]
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity, 
+                      ease: "linear" 
+                    }}
+                  >
+                    <Star size={24} />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute bottom-4 left-4 text-blue-400"
+                    animate={{ 
+                      rotate: [0, -360],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity, 
+                      ease: "linear" 
+                    }}
+                  >
+                    <Sparkles size={20} />
+                  </motion.div>
+
+                  {/* Hover overlay with live buttons */}
+                  <motion.div
+                    className="absolute inset-0 bg-black/60 flex items-end justify-center pb-8 gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {/* Animated background pattern */}
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute inset-0" style={{
-                        backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                        backgroundSize: '20px 20px'
-                      }}></div>
-                    </div>
-
-                    {/* Enhanced icon with better styling */}
-                    <motion.div 
-                      className="text-8xl relative z-10 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-slate-700 dark:to-slate-800 rounded-full p-8 shadow-2xl"
-                      animate={{ 
-                        rotate: [0, 5, -5, 0],
-                        scale: [1, 1.05, 1],
-                        y: [0, -5, 0]
-                      }}
-                      transition={{ 
-                        duration: 6, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }}
+                    <motion.a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white text-black px-3 py-1.5 rounded-md font-medium text-xs flex items-center gap-1.5 hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ y: 10, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
                     >
-                      {project.icon}
-                    </motion.div>
-
-                    {/* Floating elements */}
-                    <motion.div
-                      className="absolute top-4 right-4 text-yellow-400"
-                      animate={{ 
-                        rotate: [0, 360],
-                        scale: [1, 1.2, 1]
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity, 
-                        ease: "linear" 
-                      }}
+                      <Play size={12} />
+                      Demo
+                    </motion.a>
+                    <motion.a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-black text-white px-3 py-1.5 rounded-md font-medium text-xs flex items-center gap-1.5 hover:bg-gray-800 transition-colors duration-200 shadow-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ y: 10, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.2, duration: 0.3 }}
                     >
-                      <Star size={24} />
-                    </motion.div>
-
-                    {/* Live indicator */}
-                    <motion.div
-                      className="absolute top-4 left-4 flex items-center gap-1 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                      LIVE
-                    </motion.div>
-
-                    {/* Overlay with enhanced effects */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                      <motion.div 
-                        className="text-center text-white"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileHover={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="flex flex-col sm:flex-row gap-4">
-                          <Button
-                            size="lg"
-                            className="bg-white text-black font-bold px-6 py-3 shadow-lg hover:bg-gray-100 transition-all duration-300"
-                            asChild
-                          >
-                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink className="mr-2 h-5 w-5" />
-                              Live Demo
-                            </a>
-                          </Button>
-                          <Button
-                            size="lg"
-                            className="bg-black text-white font-bold px-6 py-3 shadow-lg hover:bg-gray-800 transition-all duration-300"
-                            asChild
-                          >
-                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                              <Github className="mr-2 h-5 w-5" />
-                              View Code
-                            </a>
-                          </Button>
-                        </div>
-                      </motion.div>
-                    </div>
+                      <Github size={12} />
+                      Code
+                    </motion.a>
                   </motion.div>
                 </div>
 
-                <div className="p-8">
-                  {/* Enhanced header with badges */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{project.title}</h3>
-                      <div className="flex items-center gap-3 mb-4 flex-wrap">
-                        {project.isFreelancing && (
-                          <span className="bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 text-xs font-medium px-3 py-1 rounded-full">
-                            <Rocket className="inline mr-1 h-3 w-3" />
-                            Freelancing
-                          </span>
-                        )}
-                        <span className={`text-xs font-medium px-3 py-1 rounded-full ${difficultyColors[project.difficulty as keyof typeof difficultyColors]}`}>
-                          <TrendingUp className="inline mr-1 h-3 w-3" />
-                          {project.difficulty}
-                        </span>
-                        <span className={`text-xs font-medium px-3 py-1 rounded-full ${categoryColors[project.category as keyof typeof categoryColors]}`}>
-                          {project.category}
-                        </span>
-                        <div className="flex items-center gap-1 text-slate-500 dark:text-slate-400">
-                          <Star size={14} className="fill-yellow-400 text-yellow-400" />
-                          <span className="text-sm font-medium">{project.stars}</span>
-                        </div>
-                      </div>
+                {/* Project Content */}
+                <div className="p-6">
+                  {/* Project title */}
+                  <motion.h3
+                    className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {project.title}
+                  </motion.h3>
+
+                  {/* Project Description */}
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Completion Date */}
+                  <div className="flex items-center gap-2 mb-4 text-xs text-slate-500 dark:text-slate-500">
+                    <Calendar size={14} />
+                    <span>Completed: {project.completedDate}</span>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">Tech Stack:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, techIndex) => (
+                        <motion.span
+                          key={techIndex}
+                          className={`px-3 py-1.5 text-sm font-medium rounded-lg ${techColors[tech] || "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"}`}
+                          whileHover={{ scale: 1.05 }}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: techIndex * 0.1, duration: 0.3 }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
                     </div>
                   </div>
 
-                  <p className="text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">{project.description}</p>
-
-                  {/* Enhanced technology tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, techIndex) => (
+                  {/* Project Info Row */}
+                  <div className="flex items-center justify-between">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
                       <motion.span
-                        key={techIndex}
-                        className={`text-xs font-medium px-3 py-1.5 rounded-full transition-all duration-300 hover:scale-105 ${
-                          techColors[tech] || "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300"
-                        }`}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: techIndex * 0.1 }}
+                        className="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 text-xs font-medium rounded-full"
+                        whileHover={{ scale: 1.05 }}
                       >
-                        {tech}
+                        {project.difficulty}
                       </motion.span>
-                    ))}
-                  </div>
+                      <motion.span
+                        className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 text-xs font-medium rounded-full"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {project.category}
+                      </motion.span>
+                      {project.isFreelancing && (
+                        <motion.span
+                          className="px-3 py-1 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 text-xs font-medium rounded-full"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          Freelancing
+                        </motion.span>
+                      )}
+                    </div>
 
-                  {/* Enhanced footer */}
-                  <div className="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
-                    <div className="flex items-center">
-                      <Calendar className="mr-2 h-4 w-4" />
-                      <span>Completed in {project.completedDate}</span>
+                    {/* Stars */}
+                    <div className="flex items-center gap-1 text-yellow-500">
+                      <Star size={16} fill="currentColor" />
+                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                        {project.stars}
+                      </span>
                     </div>
                   </div>
                 </div>
               </motion.div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className="text-center mt-16"
-        >
-          <motion.div
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button
-              size="lg"
-              className="glass-effect bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-10 py-4 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              asChild
-            >
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Sparkles className="mr-2 h-5 w-5" />
-                View All Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-          </motion.div>
         </motion.div>
       </div>
     </section>
