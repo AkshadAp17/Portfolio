@@ -86,8 +86,8 @@ const Navigation = () => {
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
       
-      <div className="relative w-full px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="relative w-full px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center py-3 sm:py-4">
           {/* Logo/Brand */}
           <motion.div
             className="flex items-center cursor-pointer group"
@@ -97,7 +97,7 @@ const Navigation = () => {
           >
             {/* Animated logo icon */}
             <motion.div
-              className="relative w-12 h-12 mr-4"
+              className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-4"
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
@@ -114,16 +114,17 @@ const Navigation = () => {
             
             <div className="flex flex-col">
               <motion.h1
-                className="text-xl font-bold bg-gradient-to-r from-slate-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
+                className="text-lg sm:text-xl font-bold bg-gradient-to-r from-slate-900 via-blue-600 to-purple-600 dark:from-white dark:via-blue-400 dark:to-purple-400 bg-clip-text text-transparent"
                 whileHover={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                Akshad Apastambh
+                <span className="hidden sm:inline">Akshad Apastambh</span>
+                <span className="sm:hidden">Akshad A.</span>
               </motion.h1>
               <motion.div
-                className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400"
+                className="hidden sm:flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400"
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >

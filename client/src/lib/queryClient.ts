@@ -12,10 +12,8 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  // If the URL starts with /api, prepend the backend URL
-  const fullUrl = url.startsWith('/api') ? `http://localhost:5000${url}` : url;
-  
-  const res = await fetch(fullUrl, {
+  // Use relative URLs since frontend and backend run on the same port in Replit
+  const res = await fetch(url, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
@@ -33,9 +31,8 @@ export const getQueryFn: <T>(options: {
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
     const url = queryKey[0] as string;
-    const fullUrl = url.startsWith('/api') ? `http://localhost:5000${url}` : url;
     
-    const res = await fetch(fullUrl, {
+    const res = await fetch(url, {
       credentials: "include",
     });
 

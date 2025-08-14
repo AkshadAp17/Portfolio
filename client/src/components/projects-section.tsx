@@ -5,110 +5,35 @@ import { ExternalLink, Github, Calendar, ArrowRight, Sparkles, Star, Zap, Trendi
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Legal Case Management System",
-      description: "Comprehensive legal case management platform with client management, case tracking, document management, and billing system. Features role-based access control and automated workflows.",
-      visual: "⚖️",
-      technologies: ["React", "Node.js", "MongoDB", "TypeScript"],
+      title: "Split Money - Expense Tracker",
+      description: "Smart expense tracking and bill splitting application for groups. Features real-time calculations, receipt scanning, expense categorization, and settlement recommendations with multiple payment methods.",
+      visual: "💰",
+      technologies: ["React", "Node.js", "MongoDB", "Receipt OCR"],
       completedDate: "March 2024",
       demoUrl: "#",
       githubUrl: "#",
       isFreelancing: false,
-      stars: 15,
+      stars: 34,
       difficulty: "Advanced",
-      category: "Enterprise",
-      icon: "🏛️",
-      color: "from-blue-500 to-purple-600"
-    },
-    {
-      title: "Hema Motor - Freelancing Project",
-      description: "Automotive service booking and management platform for Hema Motor workshop. Features service booking, real-time tracking, payment processing, and customer feedback system.",
-      visual: "🚗",
-      technologies: ["React", "Node.js", "MongoDB", "Payment Gateway"],
-      completedDate: "February 2024",
-      demoUrl: "https://vista-etyd.onrender.com/",
-      githubUrl: "https://github.com/AkshadAp17/Vista",
-      isFreelancing: true,
-      stars: 28,
-      difficulty: "Intermediate",
-      category: "E-commerce",
-      icon: "🏁",
+      category: "Finance",
+      icon: "💸",
       color: "from-green-500 to-emerald-600"
     },
     {
-      title: "Facility Booking System",
-      description: "Corporate facility booking system for meeting rooms, conference halls, and equipment. Features calendar integration, conflict resolution, and usage analytics.",
-      visual: "🏢",
-      technologies: ["React", "Node.js", "MongoDB", "Real-time Updates"],
-      completedDate: "January 2024",
+      title: "URL Shortener Service", 
+      description: "Professional URL shortening service with custom aliases, click analytics, QR code generation, and bulk operations. Features user management, link expiration, and detailed statistics dashboard.",
+      visual: "🔗",
+      technologies: ["React", "Node.js", "MongoDB", "Analytics"],
+      completedDate: "February 2024",
       demoUrl: "#",
       githubUrl: "#",
       isFreelancing: false,
-      stars: 12,
+      stars: 28,
       difficulty: "Intermediate",
-      category: "Corporate",
-      icon: "🏢",
-      color: "from-orange-500 to-red-600"
-    },
-    {
-      title: "Task Management Dashboard",
-      description: "Comprehensive task management application with drag-and-drop functionality, team collaboration, and progress tracking. Built with modern React patterns and state management.",
-      visual: "📋",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Zustand"],
-      completedDate: "October 2023",
-      demoUrl: "https://task-manager-demo.vercel.app/",
-      githubUrl: "https://github.com/AkshadAp17/task-management-app",
-      isFreelancing: false,
-      stars: 42,
-      difficulty: "Intermediate",
-      category: "Productivity",
-      icon: "✅",
-      color: "from-indigo-500 to-purple-600"
-    },
-    {
-      title: "Weather Forecast Application",
-      description: "Real-time weather application with location-based forecasts, interactive maps, and weather alerts. Features PWA capabilities and offline functionality.",
-      visual: "🌤️",
-      technologies: ["Vue.js", "PWA", "Chart.js", "Weather API"],
-      completedDate: "September 2023",
-      demoUrl: "https://weather-app-vue.vercel.app/",
-      githubUrl: "https://github.com/AkshadAp17/weather-forecast-app",
-      isFreelancing: false,
-      stars: 38,
-      difficulty: "Intermediate",
-      category: "Web App",
-      icon: "🌡️",
-      color: "from-sky-500 to-blue-600"
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "Full-featured e-commerce platform with payment integration, inventory management, and admin dashboard. Includes Stripe payment processing and advanced filtering.",
-      visual: "🛒",
-      technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-      completedDate: "August 2023",
-      demoUrl: "https://ecommerce-platform-demo.vercel.app/",
-      githubUrl: "https://github.com/AkshadAp17/ecommerce-platform",
-      isFreelancing: false,
-      stars: 65,
-      difficulty: "Advanced",
-      category: "E-commerce",
-      icon: "🏪",
-      color: "from-rose-500 to-pink-600"
-    },
-    {
-      title: "Social Media Dashboard",
-      description: "Analytics dashboard for social media management with real-time data visualization, content scheduling, and engagement tracking across multiple platforms.",
-      visual: "📊",
-      technologies: ["Next.js", "Prisma", "Redis", "OAuth"],
-      completedDate: "July 2023",
-      demoUrl: "https://social-dashboard-demo.vercel.app/",
-      githubUrl: "https://github.com/AkshadAp17/social-media-dashboard",
-      isFreelancing: false,
-      stars: 29,
-      difficulty: "Advanced",
-      category: "Analytics",
-      icon: "📈",
-      color: "from-violet-500 to-purple-600"
-    },
+      category: "Web Service",
+      icon: "🔗",
+      color: "from-blue-500 to-purple-600"
+    }
   ];
 
   const techColors: { [key: string]: string } = {
@@ -134,8 +59,8 @@ const ProjectsSection = () => {
   };
 
   const stats = [
-    { label: "Projects", value: "7+", color: "text-blue-500" },
-    { label: "Technologies", value: "15+", color: "text-purple-500" },
+    { label: "Projects", value: "2+", color: "text-blue-500" },
+    { label: "Technologies", value: "8+", color: "text-purple-500" },
     { label: "Years", value: "2+", color: "text-green-500" },
   ];
 
@@ -184,7 +109,7 @@ const ProjectsSection = () => {
             }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            A showcase of my professional projects including freelancing work and full-stack applications
+Featured Projects
           </motion.h2>
           
           {/* Stats */}

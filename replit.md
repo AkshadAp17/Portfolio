@@ -141,6 +141,9 @@ The application now uses MongoDB as its primary database with Mongoose ODM for d
   - Application successfully running on port 5000 with Vite development server
   - All features working: portfolio sections, contact form, dark mode, responsive design
   - Migration completed with zero data loss and full functionality preserved
+  - Fixed contact form API fetch error by using relative URLs instead of localhost
+  - Streamlined projects to show only Split Money and URL Shortener projects as requested
+  - Enhanced navbar responsiveness with mobile-optimized logo and navigation
 
 ## User Preferences
 
