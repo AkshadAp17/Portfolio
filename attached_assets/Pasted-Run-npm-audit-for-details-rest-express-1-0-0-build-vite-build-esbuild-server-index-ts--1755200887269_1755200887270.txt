@@ -1,0 +1,41 @@
+Run `npm audit` for details.
+> rest-express@1.0.0 build
+> vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+vite v5.4.19 building for production...
+transforming...
+✓ 2082 modules transformed.
+rendering chunks...
+computing gzip size...
+../dist/public/index.html                   0.63 kB │ gzip:   0.38 kB
+../dist/public/assets/index-B9QkiaEL.css   90.63 kB │ gzip:  14.92 kB
+../dist/public/assets/index-D1CVj-ks.js   740.40 kB │ gzip: 217.13 kB
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.20s
+  dist/index.js  14.3kb
+⚡ Done in 4ms
+==> Uploading build...
+==> Uploaded in 5.8s. Compression took 3.4s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm run start'
+> rest-express@1.0.0 start
+> set NODE_ENV=production&& node dist/index.js
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+Attempting MongoDB connection...
+DATABASE_URL: Set
+Connection string: mongodb+srv://akmnop001:apWOwenAyNl3mmOI@cluster0.0fro3vr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+7:47:37 PM [express] serving on port 5000
+7:47:42 PM [vite] Pre-transform error: Failed to load url /src/main.tsx?v=YRAyL-oBX8AqXFmlkOz_7 (resolved id: /src/main.tsx?v=YRAyL-oBX8AqXFmlkOz_7). Does the file exist?
+==> Exited with status 1
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+==> Running 'npm run start'
+> rest-express@1.0.0 start
+> set NODE_ENV=production&& node dist/index.js
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+Attempting MongoDB connection...
+DATABASE_URL: Set
+Connection string: mongodb+srv://akmnop001:apWOwenAyNl3mmOI@cluster0.0fro3vr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+7:47:56 PM [express] serving on port 5000
