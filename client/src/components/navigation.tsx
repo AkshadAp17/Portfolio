@@ -137,7 +137,7 @@ const Navigation = () => {
                 className={`relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 font-medium overflow-hidden group ${
                   activeSection === item.id
                     ? "text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg"
-                    : "text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400"
+                    : "text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-sm border border-slate-200/50 dark:border-slate-700/50"
                 }`}
                 whileHover={{ 
                   scale: 1.05, 
@@ -147,7 +147,7 @@ const Navigation = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {/* Background gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
                 
                 <item.icon className="h-4 w-4 relative z-10" />
                 <span className="relative z-10">{item.label}</span>
