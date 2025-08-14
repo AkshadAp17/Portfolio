@@ -7,6 +7,14 @@ import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
 
+// Force production mode for better detection
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'development';
+}
+
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('Process env check:', process.env.NODE_ENV === "development" ? "DEVELOPMENT MODE" : "PRODUCTION MODE");
+
 const app = express();
 
 // Add CORS middleware
@@ -73,7 +81,7 @@ app.use((req, res, next) => {
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
+  if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
