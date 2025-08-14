@@ -5,6 +5,21 @@ import { ExternalLink, Github, Calendar, ArrowRight, Sparkles, Star, Zap, Trendi
 const ProjectsSection = () => {
   const projects = [
     {
+      title: "Hema Motor LG Facility Booking",
+      description: "Comprehensive automotive service booking platform with real-time tracking, payment processing, and customer management system. Features appointment scheduling, service status updates, and admin dashboard.",
+      visual: "🚗",
+      technologies: ["React", "Node.js", "MongoDB", "Payment Gateway", "Real-time Updates"],
+      completedDate: "Feb 2024",
+      demoUrl: "https://vista-etyd.onrender.com/",
+      githubUrl: "#",
+      isFreelancing: true,
+      stars: 42,
+      difficulty: "Professional",
+      category: "Booking System",
+      icon: "🔧",
+      color: "from-orange-500 to-red-600"
+    },
+    {
       title: "Split Money - Expense Tracker",
       description: "Smart expense tracking and bill splitting application for groups. Features real-time calculations, receipt scanning, expense categorization, and settlement recommendations with multiple payment methods.",
       visual: "💰",
@@ -59,8 +74,8 @@ const ProjectsSection = () => {
   };
 
   const stats = [
-    { label: "Projects", value: "2+", color: "text-blue-500" },
-    { label: "Technologies", value: "8+", color: "text-purple-500" },
+    { label: "Projects", value: "3+", color: "text-blue-500" },
+    { label: "Technologies", value: "10+", color: "text-purple-500" },
     { label: "Years", value: "2+", color: "text-green-500" },
   ];
 
@@ -325,36 +340,49 @@ Featured Projects
                     </div>
                   </div>
 
-                  {/* Project Info Row */}
-                  <div className="flex items-center justify-between">
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <motion.span
+                      className="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 text-xs font-medium rounded-full"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {project.difficulty}
+                    </motion.span>
+                    <motion.span
+                      className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 text-xs font-medium rounded-full"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {project.category}
+                    </motion.span>
+                    {project.isFreelancing && (
                       <motion.span
-                        className="px-3 py-1 bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300 text-xs font-medium rounded-full"
+                        className="px-3 py-1 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 text-xs font-medium rounded-full"
                         whileHover={{ scale: 1.05 }}
                       >
-                        {project.difficulty}
+                        Freelancing
                       </motion.span>
-                      <motion.span
-                        className="px-3 py-1 bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 text-xs font-medium rounded-full"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {project.category}
-                      </motion.span>
-                      {project.isFreelancing && (
-                        <motion.span
-                          className="px-3 py-1 bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 text-xs font-medium rounded-full"
-                          whileHover={{ scale: 1.05 }}
-                        >
-                          Freelancing
-                        </motion.span>
-                      )}
-                    </div>
+                    )}
+                  </div>
 
-                    {/* Stars */}
+                  {/* Project Actions Row */}
+                  <div className="flex items-center justify-between">
+                    {/* View Project Button */}
+                    <motion.a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-blue-600 hover:to-purple-600 transition-all duration-300 shadow-sm hover:shadow-md"
+                      whileHover={{ scale: 1.05, y: -1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ExternalLink size={14} />
+                      View Project
+                    </motion.a>
+
+                    {/* Stars - smaller and positioned down */}
                     <div className="flex items-center gap-1 text-yellow-500">
-                      <Star size={16} fill="currentColor" />
-                      <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                      <Star size={14} fill="currentColor" />
+                      <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
                         {project.stars}
                       </span>
                     </div>
