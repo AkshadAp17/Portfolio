@@ -22,10 +22,10 @@ const Footer = () => {
 
   const services = [
     "Web Development",
-    "Mobile Apps",
-    "UI/UX Design",
+    "UI/UX Design", 
     "Consulting",
     "Technical Writing",
+    "API Integration",
   ];
 
   return (

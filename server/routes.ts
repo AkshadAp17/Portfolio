@@ -40,8 +40,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         const { html, text } = generateContactEmailTemplate(validatedData);
         
         const emailSuccess = await sendEmail({
-          to: 'akshadapastamb@gmail.com', // Your email
-          from: 'noreply@akshadportfolio.com', // Verified sender email
+          to: 'akshadapastambh37@gmail.com', // Your email
+          from: 'akshadapastambh37@gmail.com', // From your verified email
           subject: `Portfolio Contact: ${validatedData.subject}`,
           text,
           html,

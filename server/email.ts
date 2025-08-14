@@ -28,8 +28,8 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
       to: params.to,
       from: params.from,
       subject: params.subject,
-      text: params.text,
-      html: params.html,
+      text: params.text || '',
+      html: params.html || '',
     });
     console.log('Email sent successfully to:', params.to);
     return true;
@@ -81,12 +81,7 @@ export function generateContactEmailTemplate(data: {
             <div class="label">Subject:</div>
             <div class="value">${data.subject}</div>
           </div>
-          ${data.budget ? `
-          <div class="field">
-            <div class="label">Budget:</div>
-            <div class="value">${data.budget}</div>
-          </div>
-          ` : ''}
+
           <div class="field">
             <div class="label">Message:</div>
             <div class="value">${data.message.replace(/\n/g, '<br>')}</div>
@@ -107,7 +102,6 @@ New Contact Form Submission
 Name: ${data.firstName} ${data.lastName}
 Email: ${data.email}
 Subject: ${data.subject}
-${data.budget ? `Budget: ${data.budget}` : ''}
 
 Message:
 ${data.message}

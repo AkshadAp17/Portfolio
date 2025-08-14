@@ -18,7 +18,6 @@ const ContactSection = () => {
     lastName: "",
     email: "",
     subject: "",
-    budget: "",
     message: "",
   });
 
@@ -40,7 +39,6 @@ const ContactSection = () => {
         lastName: "",
         email: "",
         subject: "",
-        budget: "",
         message: "",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
@@ -249,20 +247,7 @@ const ContactSection = () => {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="budget">Budget Range</Label>
-                <Select value={formData.budget} onValueChange={(value) => handleInputChange("budget", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select budget range" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="under-5k">Under $5,000</SelectItem>
-                    <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                    <SelectItem value="10k-20k">$10,000 - $20,000</SelectItem>
-                    <SelectItem value="20k-plus">$20,000+</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+
 
               <div>
                 <Label htmlFor="message">Message *</Label>
