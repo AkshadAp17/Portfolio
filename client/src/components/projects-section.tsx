@@ -50,36 +50,6 @@ const ProjectsSection = () => {
       color: "from-orange-500 to-red-600"
     },
     {
-      title: "Food Delivery System",
-      description: "Full-stack food delivery application with restaurant management and delivery tracking. Features GPS integration, payment processing, and real-time order updates.",
-      visual: "🍕",
-      technologies: ["React Native", "Node.js", "MongoDB", "GPS Integration"],
-      completedDate: "December 2023",
-      demoUrl: "#",
-      githubUrl: "#",
-      isFreelancing: false,
-      stars: 35,
-      difficulty: "Advanced",
-      category: "Mobile App",
-      icon: "🍕",
-      color: "from-pink-500 to-rose-600"
-    },
-    {
-      title: "Money Split Application",
-      description: "Group expense management and money splitting application. Features automatic bill splitting algorithms, expense tracking, and real-time collaboration.",
-      visual: "💰",
-      technologies: ["React", "Node.js", "MongoDB", "WebSocket"],
-      completedDate: "November 2023",
-      demoUrl: "https://splie-money-5pdr.vercel.app/",
-      githubUrl: "https://github.com/AkshadAp17/Splie-Money",
-      isFreelancing: false,
-      stars: 42,
-      difficulty: "Intermediate",
-      category: "Finance",
-      icon: "💳",
-      color: "from-yellow-500 to-amber-600"
-    },
-    {
       title: "Task Management Dashboard",
       description: "Comprehensive task management application with drag-and-drop functionality, team collaboration, and progress tracking. Built with modern React patterns and state management.",
       visual: "📋",
@@ -164,7 +134,7 @@ const ProjectsSection = () => {
   };
 
   const stats = [
-    { label: "Projects", value: "9+", color: "text-blue-500" },
+    { label: "Projects", value: "7+", color: "text-blue-500" },
     { label: "Technologies", value: "15+", color: "text-purple-500" },
     { label: "Years", value: "2+", color: "text-green-500" },
   ];
@@ -353,7 +323,7 @@ const ProjectsSection = () => {
 
                   {/* Hover overlay with live buttons */}
                   <motion.div
-                    className="absolute inset-0 bg-black/60 flex items-end justify-center pb-8 gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-black/60 flex items-end justify-center pb-4 gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
@@ -362,28 +332,28 @@ const ProjectsSection = () => {
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-white text-black px-3 py-1.5 rounded-md font-medium text-xs flex items-center gap-1.5 hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                      className="bg-white text-black px-2 py-1 rounded-md font-medium text-xs flex items-center gap-1 hover:bg-gray-100 transition-colors duration-200 shadow-lg"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ y: 10, opacity: 0 }}
                       whileInView={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1, duration: 0.3 }}
                     >
-                      <Play size={12} />
+                      <Play size={10} />
                       Demo
                     </motion.a>
                     <motion.a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-black text-white px-3 py-1.5 rounded-md font-medium text-xs flex items-center gap-1.5 hover:bg-gray-800 transition-colors duration-200 shadow-lg"
+                      className="bg-black text-white px-2 py-1 rounded-md font-medium text-xs flex items-center gap-1 hover:bg-gray-800 transition-colors duration-200 shadow-lg"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ y: 10, opacity: 0 }}
                       whileInView={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.2, duration: 0.3 }}
                     >
-                      <Github size={12} />
+                      <Github size={10} />
                       Code
                     </motion.a>
                   </motion.div>
@@ -468,6 +438,28 @@ const ProjectsSection = () => {
               </motion.div>
             </motion.div>
           ))}
+        </motion.div>
+        
+        {/* See Other Projects Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="text-center mt-12"
+        >
+          <motion.a
+            href="https://github.com/AkshadAp17"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Github size={24} />
+            See Other Projects on GitHub
+            <ExternalLink size={20} />
+          </motion.a>
         </motion.div>
       </div>
     </section>

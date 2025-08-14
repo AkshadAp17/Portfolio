@@ -45,7 +45,7 @@ class MemoryStorage {
   }
   
   async getUserByUsername(username: string) {
-    for (const user of this.users.values()) {
+    for (const user of Array.from(this.users.values())) {
       if (user.username === username) return user;
     }
     return null;
@@ -74,7 +74,7 @@ export class DatabaseStorage implements IStorage {
       const user = new User(insertUser);
       return await user.save();
     }
-    return await memoryStorage.createUser(insertUser);
+    return await memoryStorage.createUser(insertUser) as unknown as IUser;
   }
 
   async createContactSubmission(insertSubmission: InsertContactSubmission): Promise<IContactSubmission> {
@@ -82,7 +82,7 @@ export class DatabaseStorage implements IStorage {
       const submission = new ContactSubmission(insertSubmission);
       return await submission.save();
     }
-    return await memoryStorage.createContactSubmission(insertSubmission);
+    return await memoryStorage.createContactSubmission(insertSubmission) as unknown as IContactSubmission;
   }
 
   async getContactSubmissions(): Promise<IContactSubmission[]> {

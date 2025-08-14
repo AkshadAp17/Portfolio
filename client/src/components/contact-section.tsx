@@ -27,7 +27,8 @@ const ContactSection = () => {
 
   const submitContactMutation = useMutation({
     mutationFn: async (data: InsertContactSubmission) => {
-      return await apiRequest("POST", "/api/contact", data);
+      const response = await apiRequest("POST", "/api/contact", data);
+      return await response.json();
     },
     onSuccess: () => {
       toast({
@@ -68,7 +69,16 @@ const ContactSection = () => {
       return;
     }
 
-    submitContactMutation.mutate(formData as InsertContactSubmission);
+    try {
+      submitContactMutation.mutate(formData as InsertContactSubmission);
+    } catch (error) {
+      console.error("Contact form submission error:", error);
+      toast({
+        title: "Error sending message",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const contactInfo = [
@@ -167,7 +177,7 @@ const ContactSection = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/AkshadAp17"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-slate-700 text-white p-3 rounded-lg hover:bg-slate-800 transition-colors duration-200"
