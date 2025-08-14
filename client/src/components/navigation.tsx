@@ -76,8 +76,8 @@ const Navigation = () => {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-slate-700/50"
-          : "bg-transparent"
+          ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-slate-700/50"
+          : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-md border-b border-slate-200/30 dark:border-slate-700/30"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -173,7 +173,7 @@ const Navigation = () => {
                 variant="outline"
                 size="icon"
                 onClick={toggleTheme}
-                className="relative bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 shadow-lg overflow-hidden group"
+                className="relative bg-white/90 backdrop-blur-sm dark:bg-slate-800/90 border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-800 shadow-lg overflow-hidden group"
               >
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -183,7 +183,7 @@ const Navigation = () => {
                 {isDark ? (
                   <Sun className="h-4 w-4 text-yellow-500 relative z-10" />
                 ) : (
-                  <Moon className="h-4 w-4 text-slate-700 relative z-10" />
+                  <Moon className="h-4 w-4 text-slate-800 dark:text-slate-300 relative z-10" />
                 )}
               </Button>
             </motion.div>
