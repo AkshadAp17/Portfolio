@@ -5,19 +5,49 @@ import { ExternalLink, Github, Calendar, ArrowRight, Sparkles, Star, Zap, Trendi
 const ProjectsSection = () => {
   const projects = [
     {
-      title: "Hema Motor LG Facility Booking",
-      description: "Comprehensive automotive service booking platform with real-time tracking, payment processing, and customer management system. Features appointment scheduling, service status updates, and admin dashboard.",
+      title: "Hema Motor Workshop",
+      description: "Complete automotive service management platform with appointment scheduling, service tracking, customer management, and integrated payment processing. Features real-time notifications and admin dashboard.",
       visual: "🚗",
       technologies: ["React", "Node.js", "MongoDB", "Payment Gateway", "Real-time Updates"],
       completedDate: "Feb 2024",
-      demoUrl: "https://vista-etyd.onrender.com/",
-      githubUrl: "#",
+      demoUrl: "https://github.com/AkshadAp17/Hema-Motor-Workshop",
+      githubUrl: "https://github.com/AkshadAp17/Hema-Motor-Workshop",
       isFreelancing: true,
-      stars: 42,
+      stars: 25,
       difficulty: "Professional",
-      category: "Booking System",
+      category: "Service Management",
       icon: "🔧",
       color: "from-orange-500 to-red-600"
+    },
+    {
+      title: "Legal Case Management",
+      description: "Comprehensive legal case tracking and management system for law firms. Features client management, case timeline, document storage, billing integration, and court date scheduling with automated reminders.",
+      visual: "⚖️",
+      technologies: ["React", "Node.js", "MongoDB", "Document Management", "Billing System"],
+      completedDate: "Jan 2024",
+      demoUrl: "https://github.com/AkshadAp17/Legal-Case-Management",
+      githubUrl: "https://github.com/AkshadAp17/Legal-Case-Management",
+      isFreelancing: false,
+      stars: 18,
+      difficulty: "Professional",
+      category: "Legal Tech",
+      icon: "📋",
+      color: "from-purple-500 to-indigo-600"
+    },
+    {
+      title: "Facility Booking System",
+      description: "Modern facility booking and management platform for organizations. Features room booking, resource scheduling, availability tracking, user permissions, and automated confirmation systems.",
+      visual: "🏢",
+      technologies: ["React", "Node.js", "MongoDB", "Calendar Integration", "User Management"],
+      completedDate: "Dec 2023",
+      demoUrl: "https://github.com/AkshadAp17/Facility-Booking-System",
+      githubUrl: "https://github.com/AkshadAp17/Facility-Booking-System",
+      isFreelancing: false,
+      stars: 22,
+      difficulty: "Advanced",
+      category: "Booking System",
+      icon: "🏠",
+      color: "from-teal-500 to-cyan-600"
     },
     {
       title: "Split Money - Expense Tracker",
@@ -71,11 +101,17 @@ const ProjectsSection = () => {
     "Real-time Updates": "bg-violet-100 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300",
     "GPS Integration": "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300",
     "WebSocket": "bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300",
+    "Document Management": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300",
+    "Billing System": "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300",
+    "Calendar Integration": "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300",
+    "User Management": "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
+    "Receipt OCR": "bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300",
+    "Analytics": "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300",
   };
 
   const stats = [
-    { label: "Projects", value: "3+", color: "text-blue-500" },
-    { label: "Technologies", value: "10+", color: "text-purple-500" },
+    { label: "Projects", value: "5+", color: "text-blue-500" },
+    { label: "Technologies", value: "12+", color: "text-purple-500" },
     { label: "Years", value: "2+", color: "text-green-500" },
   ];
 

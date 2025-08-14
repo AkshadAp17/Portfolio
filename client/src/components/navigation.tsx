@@ -189,26 +189,52 @@ const Navigation = () => {
             </motion.div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="md:hidden"
-          >
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="relative bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700"
+          {/* Mobile Theme Toggle and Menu */}
+          <div className="flex items-center gap-2 md:hidden">
+            {/* Mobile Theme Toggle */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 180 }}
+              whileTap={{ scale: 0.9 }}
             >
-              <motion.div
-                animate={{ rotate: isMenuOpen ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                className="relative bg-white/90 backdrop-blur-sm dark:bg-slate-800/90 border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-800 shadow-lg overflow-hidden group"
               >
-                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-              </motion.div>
-            </Button>
-          </motion.div>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  animate={{ rotate: isDark ? 0 : 180 }}
+                  transition={{ duration: 0.5 }}
+                />
+                {isDark ? (
+                  <Sun className="h-4 w-4 text-yellow-500 relative z-10" />
+                ) : (
+                  <Moon className="h-4 w-4 text-slate-800 dark:text-slate-300 relative z-10" />
+                )}
+              </Button>
+            </motion.div>
+
+            {/* Mobile Menu Button */}
+            <motion.div
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="relative bg-white/80 backdrop-blur-sm dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700"
+              >
+                <motion.div
+                  animate={{ rotate: isMenuOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                </motion.div>
+              </Button>
+            </motion.div>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
