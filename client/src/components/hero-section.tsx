@@ -51,7 +51,7 @@ const HeroSection = () => {
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-1 gap-12 items-center">
           {/* Left Column - Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,11 +67,7 @@ const HeroSection = () => {
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium mb-6 relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                animate={{ x: [-100, 100] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              />
+
               <span className="relative z-10">👨‍💻</span>
               <span className="relative z-10">Full Stack Developer</span>
             </motion.div>
@@ -122,11 +118,7 @@ const HeroSection = () => {
                   onClick={() => scrollToSection("projects")}
                   className="relative bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-3 text-lg font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                    animate={{ x: [-100, 100] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  />
+
                   <Rocket className="mr-2 h-5 w-5 relative z-10" />
                   <span className="relative z-10">View My Work</span>
                   <ArrowDown className="ml-2 h-5 w-5 relative z-10" />
@@ -187,115 +179,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="flex justify-center lg:justify-end"
-          >
-            {/* Enhanced Developer Illustration */}
-            <motion.div 
-              className="relative w-80 h-80"
-              whileHover={{ scale: 1.05 }}
-              animate={{ 
-                boxShadow: [
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
-                  "0 25px 50px -12px rgba(59, 130, 246, 0.3)",
-                  "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
-                ]
-              }}
-              transition={{ 
-                boxShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" },
-                scale: { duration: 0.3 }
-              }}
-            >
-              {/* Outer gradient border */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-3xl p-2 shadow-2xl">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-3xl"
-                  animate={{ x: [-100, 100] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                />
-                
-                {/* Inner content */}
-                <div className="w-full h-full bg-white dark:bg-slate-800 rounded-2xl flex items-center justify-center relative overflow-hidden">
-                  <div className="text-center relative z-10">
-                    <motion.div 
-                      className="text-8xl mb-4"
-                      animate={{ 
-                        rotate: [0, 5, -5, 0],
-                        scale: [1, 1.05, 1],
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity, 
-                        ease: "easeInOut" 
-                      }}
-                    >
-                      👨‍💻
-                    </motion.div>
-                    <motion.div 
-                      className="text-xl font-semibold text-slate-700 dark:text-slate-300 mb-2"
-                      animate={{ opacity: [0.8, 1, 0.8] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      Developer
-                    </motion.div>
-                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                      React • Node.js • TypeScript
-                    </div>
-                  </div>
-                  
-                  {/* Floating elements */}
-                  <motion.div
-                    className="absolute top-4 right-4 text-yellow-400"
-                    animate={{ 
-                      rotate: [0, 360],
-                      scale: [1, 1.2, 1]
-                    }}
-                    transition={{ 
-                      duration: 4, 
-                      repeat: Infinity, 
-                      ease: "linear" 
-                    }}
-                  >
-                    <Sparkles size={24} />
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute bottom-4 left-4 text-blue-400"
-                    animate={{ 
-                      rotate: [0, -360],
-                      scale: [1, 1.1, 1]
-                    }}
-                    transition={{ 
-                      duration: 3, 
-                      repeat: Infinity, 
-                      ease: "linear" 
-                    }}
-                  >
-                    <Code size={20} />
-                  </motion.div>
-                  
-                  <motion.div
-                    className="absolute top-1/2 left-4 text-purple-400"
-                    animate={{ 
-                      y: [0, -10, 0],
-                      opacity: [0.5, 1, 0.5]
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity, 
-                      ease: "easeInOut" 
-                    }}
-                  >
-                    <Zap size={16} />
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+
         </div>
       </div>
     </section>

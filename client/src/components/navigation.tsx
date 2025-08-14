@@ -105,11 +105,7 @@ const Navigation = () => {
               <div className="absolute inset-1 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center">
                 <Code className="w-6 h-6 text-blue-600 dark:text-blue-400" />
               </div>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-xl"
-                animate={{ x: [-100, 100] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-              />
+
             </motion.div>
             
             <div className="flex flex-col">
@@ -125,10 +121,8 @@ const Navigation = () => {
               </motion.h1>
               <motion.div
                 className="hidden sm:flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400"
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2, repeat: Infinity }}
               >
-                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                 <span>Full Stack Developer</span>
               </motion.div>
             </div>
