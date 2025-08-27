@@ -87,27 +87,76 @@ const Navigation = () => {
           ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-slate-200/50 dark:border-slate-700/50"
           : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-md border-b border-slate-200/30 dark:border-slate-700/30"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ 
+        y: 0, 
+        opacity: 1,
+      }}
+      transition={{ 
+        duration: 1, 
+        ease: "easeOut", 
+        type: "spring", 
+        bounce: 0.3,
+        staggerChildren: 0.1
+      }}
     >
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+      {/* Enhanced animated background gradient */}
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5"
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        animate={{ 
+          background: [
+            "linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05), rgba(236, 72, 153, 0.05))",
+            "linear-gradient(90deg, rgba(236, 72, 153, 0.05), rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05))",
+            "linear-gradient(135deg, rgba(147, 51, 234, 0.05), rgba(236, 72, 153, 0.05), rgba(59, 130, 246, 0.05))",
+            "linear-gradient(45deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05), rgba(236, 72, 153, 0.05))",
+          ]
+        }}
+        transition={{ 
+          duration: 8, 
+          repeat: Infinity, 
+          ease: "linear" 
+        }}
+      />
       
       <div className="relative w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-3 sm:py-4">
           {/* Logo/Brand */}
           <motion.div
             className="flex items-center cursor-pointer group"
-            whileHover={{ scale: 1.05 }}
+            initial={{ x: -50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            whileHover={{ 
+              scale: 1.05,
+              x: 5,
+              transition: { duration: 0.2 }
+            }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("home")}
           >
-            {/* Animated logo icon */}
+            {/* Enhanced animated logo icon */}
             <motion.div
               className="relative w-10 h-10 sm:w-12 sm:h-12 mr-2 sm:mr-4"
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
+              whileHover={{ 
+                rotate: 360,
+                scale: 1.1,
+                y: -2
+              }}
+              animate={{
+                boxShadow: [
+                  "0 0 0 0 rgba(59, 130, 246, 0.3)",
+                  "0 0 0 8px rgba(59, 130, 246, 0)",
+                  "0 0 0 0 rgba(59, 130, 246, 0)"
+                ]
+              }}
+              transition={{ 
+                rotate: { duration: 0.6 },
+                scale: { duration: 0.2 },
+                y: { duration: 0.2 },
+                boxShadow: { duration: 2, repeat: Infinity }
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl shadow-lg"></div>
               <div className="absolute inset-1 bg-white dark:bg-slate-800 rounded-lg flex items-center justify-center">
@@ -137,8 +186,13 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item) => (
+          <motion.div 
+            className="hidden md:flex items-center space-x-2"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, staggerChildren: 0.1 }}
+          >
+            {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -147,10 +201,22 @@ const Navigation = () => {
                     ? "text-white bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg"
                     : "text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm shadow-sm border border-slate-200/50 dark:border-slate-700/50"
                 }`}
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ 
+                  y: 0, 
+                  opacity: 1,
+                  transition: { 
+                    delay: 0.6 + (index * 0.1),
+                    duration: 0.5,
+                    type: "spring",
+                    bounce: 0.4
+                  }
+                }}
                 whileHover={{ 
                   scale: 1.05, 
-                  y: -2,
-                  boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)"
+                  y: -3,
+                  boxShadow: "0 15px 35px rgba(0, 0, 0, 0.15)",
+                  rotateZ: activeSection === item.id ? 0 : 2
                 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -160,27 +226,58 @@ const Navigation = () => {
                 <item.icon className="h-4 w-4 relative z-10" />
                 <span className="relative z-10">{item.label}</span>
                 
-                {/* Active indicator */}
+                {/* Enhanced active indicator */}
                 {activeSection === item.id && (
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl"
                     layoutId="activeTab"
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    animate={{
+                      boxShadow: [
+                        "0 0 0 0 rgba(59, 130, 246, 0.4)",
+                        "0 0 0 4px rgba(59, 130, 246, 0.1)",
+                        "0 0 0 0 rgba(59, 130, 246, 0.4)"
+                      ]
+                    }}
+                    transition={{ 
+                      type: "spring", 
+                      bounce: 0.3, 
+                      duration: 0.6,
+                      boxShadow: { duration: 2, repeat: Infinity }
+                    }}
                   />
                 )}
               </motion.button>
             ))}
             
-            {/* Resume Download Button */}
+            {/* Enhanced Resume Download Button */}
             <motion.button
               onClick={handleResumeDownload}
               className="relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 font-medium overflow-hidden group bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+              initial={{ y: -20, opacity: 0, scale: 0.8 }}
+              animate={{ 
+                y: 0, 
+                opacity: 1, 
+                scale: 1,
+                boxShadow: [
+                  "0 0 0 0 rgba(34, 197, 94, 0.4)",
+                  "0 0 0 6px rgba(34, 197, 94, 0)",
+                  "0 0 0 0 rgba(34, 197, 94, 0.4)"
+                ]
+              }}
               whileHover={{ 
-                scale: 1.05, 
-                y: -2,
-                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
+                scale: 1.08, 
+                y: -3,
+                boxShadow: "0 15px 35px rgba(0, 0, 0, 0.25)",
+                rotate: [0, -1, 1, 0]
               }}
               whileTap={{ scale: 0.95 }}
+              transition={{
+                y: { delay: 1.2, duration: 0.6, type: "spring", bounce: 0.5 },
+                opacity: { delay: 1.2, duration: 0.6, type: "spring", bounce: 0.5 },
+                scale: { delay: 1.2, duration: 0.6, type: "spring", bounce: 0.5 },
+                boxShadow: { duration: 3, repeat: Infinity },
+                rotate: { duration: 0.6 }
+              }}
             >
               {/* Background gradient on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
@@ -213,7 +310,7 @@ const Navigation = () => {
                 )}
               </Button>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Mobile Theme Toggle and Menu */}
           <div className="flex items-center gap-2 md:hidden">
