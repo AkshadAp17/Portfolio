@@ -87,18 +87,18 @@ const ExperienceSection = () => {
                 className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
               />
               
-              {/* Floating rating */}
-              <motion.div
-                className="absolute top-4 right-4 flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5 + index * 0.2 }}
-              >
-                <Star className="w-4 h-4 text-yellow-500 fill-current" />
-                <span className="text-xs font-medium text-green-700 dark:text-green-300">5.0</span>
-              </motion.div>
               <div className="relative z-10">
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                  {/* Rating positioned in header for better spacing */}
+                  <motion.div
+                    className="lg:hidden flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full self-start mb-4"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + index * 0.2 }}
+                  >
+                    <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                    <span className="text-xs font-medium text-green-700 dark:text-green-300">5.0</span>
+                  </motion.div>
                   <div className="flex-1">
                     <div className="flex items-center gap-4 mb-4">
                       <motion.div
@@ -134,17 +134,32 @@ const ExperienceSection = () => {
                       </motion.div>
                     </div>
                   </div>
-                  <motion.a
-                    href={exp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="lg:ml-4 mt-4 lg:mt-0 inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span>View Project</span>
-                    <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
-                  </motion.a>
+                  
+                  {/* Action buttons and rating for larger screens */}
+                  <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4 mt-4 lg:mt-0">
+                    {/* Rating for larger screens */}
+                    <motion.div
+                      className="hidden lg:flex items-center gap-1 bg-green-100 dark:bg-green-900/30 px-3 py-1 rounded-full"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5 + index * 0.2 }}
+                    >
+                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <span className="text-xs font-medium text-green-700 dark:text-green-300">5.0</span>
+                    </motion.div>
+                    
+                    <motion.a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-blue-500 text-white px-6 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 group"
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span>View Project</span>
+                      <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
+                    </motion.a>
+                  </div>
                 </div>
 
                 <p className="text-lg text-slate-700 dark:text-slate-300 mb-8 leading-relaxed">
