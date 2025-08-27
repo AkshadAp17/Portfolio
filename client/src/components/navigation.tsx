@@ -22,7 +22,7 @@ const Navigation = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
 
-      const sections = ["home", "about", "experience", "skills", "projects", "contact", "resume"];
+      const sections = ["home", "about", "experience", "skills", "projects", "contact"];
       const scrollPositionWithOffset = scrollPosition + 100;
 
       sections.forEach((section) => {
@@ -63,6 +63,14 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/Akshad_Apastambh_Resume.pdf';
+    link.download = 'Akshad_Apastambh_Resume.pdf';
+    link.click();
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
     { id: "home", label: "Home", icon: User },
     { id: "about", label: "About", icon: FileText },
@@ -70,7 +78,6 @@ const Navigation = () => {
     { id: "skills", label: "Skills", icon: Code },
     { id: "projects", label: "Projects", icon: Sparkles },
     { id: "contact", label: "Contact", icon: MessageCircle },
-    { id: "resume", label: "Resume", icon: Download },
   ];
 
   return (
@@ -163,6 +170,24 @@ const Navigation = () => {
                 )}
               </motion.button>
             ))}
+            
+            {/* Resume Download Button */}
+            <motion.button
+              onClick={handleResumeDownload}
+              className="relative flex items-center gap-2 px-4 py-2 rounded-xl transition-all duration-300 font-medium overflow-hidden group bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg hover:shadow-xl"
+              whileHover={{ 
+                scale: 1.05, 
+                y: -2,
+                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {/* Background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              
+              <Download className="h-4 w-4 relative z-10" />
+              <span className="relative z-10">Resume</span>
+            </motion.button>
             
             {/* Theme Toggle */}
             <motion.div
@@ -262,6 +287,17 @@ const Navigation = () => {
                 {item.label}
               </motion.button>
             ))}
+            
+            {/* Mobile Resume Download Button */}
+            <motion.button
+              onClick={handleResumeDownload}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300 font-medium bg-gradient-to-r from-green-500 to-blue-500 text-white shadow-lg"
+              whileHover={{ x: 10 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Download className="h-4 w-4" />
+              Resume
+            </motion.button>
           </div>
         </motion.div>
       </div>
