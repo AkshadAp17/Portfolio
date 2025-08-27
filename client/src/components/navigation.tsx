@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Moon, Sun, Code, User, Briefcase, FileText, MessageCircle, Sparkles } from "lucide-react";
+import { Menu, X, Moon, Sun, Code, User, Briefcase, FileText, MessageCircle, Sparkles, Download } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +22,7 @@ const Navigation = () => {
       const scrollPosition = window.scrollY;
       setIsScrolled(scrollPosition > 50);
 
-      const sections = ["home", "about", "experience", "skills", "projects", "contact"];
+      const sections = ["home", "about", "experience", "skills", "projects", "resume", "contact"];
       const scrollPositionWithOffset = scrollPosition + 100;
 
       sections.forEach((section) => {
@@ -69,6 +69,7 @@ const Navigation = () => {
     { id: "experience", label: "Experience", icon: Briefcase },
     { id: "skills", label: "Skills", icon: Code },
     { id: "projects", label: "Projects", icon: Sparkles },
+    { id: "resume", label: "Resume", icon: Download },
     { id: "contact", label: "Contact", icon: MessageCircle },
   ];
 
