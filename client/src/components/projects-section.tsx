@@ -410,11 +410,20 @@ Featured Projects
                 <div className="p-6 flex-1 flex flex-col">
                   {/* Project title */}
                   <motion.h3
-                    className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
+                    className="text-xl font-bold mb-3"
                     whileHover={{ x: 5 }}
                     transition={{ duration: 0.2 }}
                   >
-                    {project.title}
+                    <motion.a
+                      href={project.demoUrl !== "#" ? project.demoUrl : project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {project.title}
+                    </motion.a>
                   </motion.h3>
 
                   {/* Project Description */}
