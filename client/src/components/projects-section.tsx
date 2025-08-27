@@ -194,7 +194,7 @@ Featured Projects
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="grid lg:grid-cols-2 gap-8"
+          className="grid lg:grid-cols-2 gap-8 items-stretch"
         >
           {projects.map((project, index) => (
             <motion.div
@@ -203,11 +203,11 @@ Featured Projects
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative"
+              className="group relative h-full"
             >
               {/* Enhanced Project Card */}
               <motion.div
-                className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700"
+                className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700 h-full flex flex-col"
                 whileHover={{ 
                   y: -10,
                   scale: 1.02,
@@ -241,37 +241,72 @@ Featured Projects
 
                 {/* Project Visual */}
                 <div className="relative h-64 bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center overflow-hidden">
+                  {/* Dynamic gradient background based on project */}
+                  <motion.div 
+                    className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-10`}
+                    animate={{ 
+                      opacity: [0.05, 0.15, 0.05] 
+                    }}
+                    transition={{ 
+                      duration: 4, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
                   {/* Animated background pattern */}
-                  <div className="absolute inset-0 opacity-5">
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-                      backgroundSize: '20px 20px'
-                    }}></div>
+                  <div className="absolute inset-0 opacity-10">
+                    <motion.div 
+                      className="absolute inset-0" 
+                      style={{
+                        backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+                        backgroundSize: '20px 20px'
+                      }}
+                      animate={{
+                        backgroundPosition: ['0px 0px', '20px 20px', '0px 0px']
+                      }}
+                      transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    />
                   </div>
                   
-                  {/* Main project icon */}
+                  {/* Main project icon with enhanced animation */}
                   <motion.div
-                    className="text-6xl relative z-10"
+                    className="text-6xl relative z-10 drop-shadow-lg"
                     animate={{ 
                       rotate: [0, 5, -5, 0],
-                      scale: [1, 1.05, 1],
-                      y: [0, -5, 0]
+                      scale: [1, 1.1, 1],
+                      y: [0, -8, 0],
+                      textShadow: [
+                        "0 0 10px rgba(59, 130, 246, 0.3)",
+                        "0 0 20px rgba(59, 130, 246, 0.5)",
+                        "0 0 10px rgba(59, 130, 246, 0.3)"
+                      ]
                     }}
                     transition={{ 
                       duration: 6, 
                       repeat: Infinity, 
                       ease: "easeInOut" 
                     }}
+                    whileHover={{
+                      scale: 1.2,
+                      rotate: 15,
+                      transition: { duration: 0.3 }
+                    }}
                   >
                     {project.icon}
                   </motion.div>
                   
-                  {/* Floating elements */}
+                  {/* Enhanced floating elements */}
                   <motion.div
-                    className="absolute top-4 right-4 text-yellow-400"
+                    className="absolute top-3 right-3 text-yellow-400 drop-shadow-sm"
                     animate={{ 
                       rotate: [0, 360],
-                      scale: [1, 1.2, 1]
+                      scale: [1, 1.3, 1],
+                      opacity: [0.7, 1, 0.7]
                     }}
                     transition={{ 
                       duration: 4, 
@@ -279,22 +314,58 @@ Featured Projects
                       ease: "linear" 
                     }}
                   >
-                    <Star size={24} />
+                    <Star size={22} fill="currentColor" />
                   </motion.div>
                   
                   <motion.div
-                    className="absolute bottom-4 left-4 text-blue-400"
+                    className="absolute bottom-3 left-3 text-purple-400 drop-shadow-sm"
                     animate={{ 
                       rotate: [0, -360],
-                      scale: [1, 1.1, 1]
+                      scale: [1, 1.2, 1],
+                      opacity: [0.6, 1, 0.6]
                     }}
                     transition={{ 
-                      duration: 3, 
+                      duration: 5, 
                       repeat: Infinity, 
                       ease: "linear" 
                     }}
                   >
-                    <Sparkles size={20} />
+                    <Sparkles size={18} />
+                  </motion.div>
+                  
+                  {/* Additional floating tech icons */}
+                  <motion.div
+                    className="absolute top-16 left-6 text-green-400 opacity-60"
+                    animate={{ 
+                      y: [0, -15, 0],
+                      rotate: [0, 180, 360],
+                      scale: [0.8, 1.1, 0.8]
+                    }}
+                    transition={{ 
+                      duration: 7, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  >
+                    <Zap size={16} />
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute bottom-16 right-6 text-pink-400 opacity-60"
+                    animate={{ 
+                      y: [0, 12, 0],
+                      rotate: [0, -180, -360],
+                      scale: [0.9, 1.2, 0.9]
+                    }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      delay: 2
+                    }}
+                  >
+                    <Rocket size={14} />
                   </motion.div>
 
                   {/* Hover overlay with live buttons */}
@@ -336,7 +407,7 @@ Featured Projects
                 </div>
 
                 {/* Project Content */}
-                <div className="p-6">
+                <div className="p-6 flex-1 flex flex-col">
                   {/* Project title */}
                   <motion.h3
                     className="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300"
@@ -401,7 +472,7 @@ Featured Projects
                   </div>
 
                   {/* Project Actions Row */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mt-auto">
                     {/* View Project Button */}
                     <motion.a
                       href={project.demoUrl}
