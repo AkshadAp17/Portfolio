@@ -15,10 +15,10 @@ const HeroSection = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Mail, href: "#", label: "Email" },
+    { icon: Github, href: "https://github.com/AkshadAp17", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/akshad-apastambh-9726332a1/", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+    { icon: Mail, href: "mailto:akshadapastambh37@gmail.com", label: "Email" },
   ];
 
   return (
@@ -153,6 +153,8 @@ const HeroSection = () => {
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group relative p-3 text-slate-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300"
                   whileHover={{ 
                     scale: 1.2, 

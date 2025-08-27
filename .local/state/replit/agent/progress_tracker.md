@@ -15,6 +15,8 @@
 [x] 15. Added complete Resume section with PDF download functionality
 [x] 16. Integrated resume data from provided PDF into structured display
 [x] 17. Updated navigation menu to include Resume link with proper routing
+[x] 18. Moved Resume section to appear after Contact section (at the end)
+[x] 19. Added working social media links to home section (GitHub, LinkedIn, Twitter, Email)
 [x] 11. Final verification - application running successfully on port 5000
 [x] 12. Vite frontend connecting properly
 [x] 13. Replit environment migration completed
