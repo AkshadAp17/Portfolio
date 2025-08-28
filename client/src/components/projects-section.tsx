@@ -31,7 +31,7 @@ const ProjectsSection = () => {
       stars: 18,
       difficulty: "Professional",
       category: "Legal Tech",
-      icon: "📋",
+      icon: "⚖️",
       color: "from-purple-500 to-indigo-600"
     },
     {
@@ -484,7 +484,7 @@ Featured Projects
                   {/* Project Actions Row */}
                   <div className="flex items-center justify-between mt-auto">
                     {/* View Project Button */}
-                    <motion.a
+{/*                     <motion.a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -494,7 +494,7 @@ Featured Projects
                     >
                       <ExternalLink size={14} />
                       View Project
-                    </motion.a>
+                    </motion.a> */}
 
                     {/* Stars - smaller and positioned down */}
                     <div className="flex items-center gap-1 text-yellow-500">
