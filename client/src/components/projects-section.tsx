@@ -10,8 +10,8 @@ const ProjectsSection = () => {
       visual: "🚗",
       technologies: ["React", "Node.js", "MongoDB", "Payment Gateway", "Real-time Updates"],
       completedDate: "Feb 2024",
-      demoUrl: "https://github.com/AkshadAp17/Hema-Motor-Workshop",
-      githubUrl: "https://github.com/AkshadAp17/Hema-Motor-Workshop",
+      demoUrl: "https://github.com/AkshadAp17/Vista",
+      githubUrl: "https://vista-3.onrender.com/",
       isFreelancing: true,
       stars: 25,
       difficulty: "Professional",
@@ -25,8 +25,8 @@ const ProjectsSection = () => {
       visual: "⚖️",
       technologies: ["React", "Node.js", "MongoDB", "Document Management", "Billing System"],
       completedDate: "Jan 2024",
-      demoUrl: "https://github.com/AkshadAp17/Legal-Case-Management",
-      githubUrl: "https://github.com/AkshadAp17/Legal-Case-Management",
+      demoUrl: "https://lg-1-lphs.onrender.com/",
+      githubUrl: "https://github.com/AkshadAp17/LG",
       isFreelancing: false,
       stars: 18,
       difficulty: "Professional",
@@ -40,8 +40,8 @@ const ProjectsSection = () => {
       visual: "🏢",
       technologies: ["React", "Node.js", "MongoDB", "Calendar Integration", "User Management"],
       completedDate: "Dec 2023",
-      demoUrl: "https://github.com/AkshadAp17/Facility-Booking-System",
-      githubUrl: "https://github.com/AkshadAp17/Facility-Booking-System",
+      demoUrl: "https://eventmp-1.onrender.com/",
+      githubUrl: "https://github.com/AkshadAp17/EventMP",
       isFreelancing: false,
       stars: 22,
       difficulty: "Advanced",
@@ -55,7 +55,7 @@ const ProjectsSection = () => {
       visual: "💰",
       technologies: ["React", "Node.js", "MongoDB", "Receipt OCR"],
       completedDate: "March 2024",
-      demoUrl: "#",
+      demoUrl: "https://splie-money-61up.vercel.app/",
       githubUrl: "#",
       isFreelancing: false,
       stars: 34,
@@ -65,20 +65,21 @@ const ProjectsSection = () => {
       color: "from-green-500 to-emerald-600"
     },
     {
-      title: "URL Shortener Service", 
-      description: "Professional URL shortening service with custom aliases, click analytics, QR code generation, and bulk operations. Features user management, link expiration, and detailed statistics dashboard.",
-      visual: "🔗",
-      technologies: ["React", "Node.js", "MongoDB", "Analytics"],
-      completedDate: "February 2024",
-      demoUrl: "#",
-      githubUrl: "#",
-      isFreelancing: false,
-      stars: 28,
-      difficulty: "Intermediate",
-      category: "Web Service",
-      icon: "🔗",
-      color: "from-blue-500 to-purple-600"
-    }
+  title: "Test Case Generator",
+  description: "Automated test case generation tool that creates optimized and randomized test data for coding problems. Supports multiple input formats, custom constraints, and bulk test case exports. Includes an intuitive interface and code integration support for developers.",
+  visual: "📑",
+  technologies: ["Next.js", "Node.js", "MongoDB", "Code Automation"],
+  completedDate: "August 2024",
+  demoUrl: "https://tesr-plmv.onrender.com/",
+  githubUrl: "https://github.com/AkshadAp17/Tesr",
+  isFreelancing: false,
+  stars: 35,
+  difficulty: "Advanced",
+  category: "Developer Tool",
+  icon: "📑",
+  color: "from-green-500 to-indigo-600"
+}
+
   ];
 
   const techColors: { [key: string]: string } = {
