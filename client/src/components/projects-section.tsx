@@ -16,7 +16,7 @@ const ProjectsSection = () => {
       stars: 25,
       difficulty: "Professional",
       category: "Service Management",
-      icon: "🔧",
+      icon: "🏍️",
       color: "from-orange-500 to-red-600"
     },
     {
